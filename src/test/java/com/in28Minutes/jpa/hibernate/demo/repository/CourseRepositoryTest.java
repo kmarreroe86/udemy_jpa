@@ -1,6 +1,7 @@
 package com.in28Minutes.jpa.hibernate.demo.repository;
 
 import com.in28Minutes.jpa.hibernate.demo.entity.Course;
+import com.in28Minutes.jpa.hibernate.demo.entity.Review;
 import org.junit.jupiter.api.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -9,6 +10,8 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.annotation.DirtiesContext;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.persistence.EntityManager;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
@@ -16,6 +19,9 @@ class CourseRepositoryTest {
 
     @Autowired
     private CourseRepository courseRepository;
+
+    @Autowired
+    EntityManager em;
 
     private Logger logger = LoggerFactory.getLogger(CourseRepositoryTest.class);
 
@@ -75,6 +81,20 @@ class CourseRepositoryTest {
     void testReviewsForCourse() {
         Course course = courseRepository.findById(10001L);
         logger.info("Reviews: {}", course.getReviews());
+    }
+
+    @Test
+    @Transactional
+    void retrieveReviewsForCourse() {
+        Course course = courseRepository.findById(10001L);
+        logger.info("{}", course.getReviews());
+    }
+
+    @Test
+    @Transactional
+    void retrieveCourseForReview() {
+        Review review = em.find(Review.class, 50001L);
+        logger.info("Review course: {}", review.getCourse());
     }
 }
 

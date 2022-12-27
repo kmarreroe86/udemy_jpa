@@ -2,6 +2,8 @@ package com.in28Minutes.jpa.hibernate.demo.repository;
 
 import com.in28Minutes.jpa.hibernate.demo.entity.Course;
 import com.in28Minutes.jpa.hibernate.demo.entity.Review;
+import com.in28Minutes.jpa.hibernate.demo.entity.Student;
+import org.apache.catalina.startup.ContextRuleSet;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -89,8 +91,15 @@ public class CourseRepository {
             rev.setCourse(course);
             em.persist(rev);
         });
+    }
 
+    public void addStudentToCourse(Long courseId, Long studentId) {
+        var course = findById(courseId);
+        var student = em.find(Student.class, studentId);
+        if (course == null || student == null) { return; }
 
+//        course.addStudent(student); // Don't work
+        student.addCourse(course);
     }
 }
 

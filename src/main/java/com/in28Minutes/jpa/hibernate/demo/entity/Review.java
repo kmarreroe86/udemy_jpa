@@ -30,6 +30,7 @@ public class Review {
 
     private String description;
 
+    /** Many-To-One side fetch is eager by default */
     @ManyToOne
     @JsonIgnore
     @Getter

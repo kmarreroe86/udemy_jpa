@@ -1,5 +1,6 @@
 package com.in28Minutes.jpa.hibernate.demo.repository;
 
+import com.in28Minutes.jpa.hibernate.demo.entity.Course;
 import com.in28Minutes.jpa.hibernate.demo.entity.Passport;
 import com.in28Minutes.jpa.hibernate.demo.entity.Student;
 import org.slf4j.Logger;
@@ -50,6 +51,30 @@ public class StudentRepository {
 
         return student;
     }
+
+    public void insertStudentAndCourse(Student student, Course course) {
+
+        em.persist(student);
+        em.persist(course);
+
+        student.addCourse(course);
+        course.addStudent(student);
+
+        em.persist(student);    // persist the owning part of the relationship
+    }
+
+    // Add Course to existing student
+    public void addCourseToStudent(Long studentId, Course course) {
+        var student = findById(studentId);
+        if (student == null) { return; }
+
+        em.persist(course);
+        student.addCourse(course);
+
+//        em.persist(student);
+//        em.merge(student);
+    }
+
 }
 
 

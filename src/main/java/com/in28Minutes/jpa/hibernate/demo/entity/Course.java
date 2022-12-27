@@ -41,10 +41,21 @@ public class Course {
     @Setter
     private LocalDateTime lastUpdatedTime;
 
+
+
+    /** One-To-Many side fetch strategy by default is lazy */
     @OneToMany( mappedBy = "course")
     @Setter(AccessLevel.NONE)
     @Getter
     private Set<Review> reviews = new HashSet<>();
+
+
+
+    /** Many-To-many by default uses lazy fetch */
+    @ManyToMany(mappedBy = "courses")
+    @Setter(AccessLevel.NONE)
+    @Getter
+    private Set<Student> students = new HashSet<>();
 
     public Course(String name) {
         this.id = null;
@@ -57,5 +68,13 @@ public class Course {
 
     public boolean removeReview(Review review) {
         return this.reviews.remove(review);
+    }
+
+    public void addStudent(Student student) {
+        students.add(student);
+    }
+
+    public void removeStudent(Student student) {
+        students.remove(student);
     }
 }

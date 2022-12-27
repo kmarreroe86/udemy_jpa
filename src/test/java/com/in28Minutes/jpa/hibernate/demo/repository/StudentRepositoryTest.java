@@ -39,10 +39,19 @@ class StudentRepositoryTest {
 
     @Test
     @Transactional
-    void givenExistingIdShouldReturnStudent() {
+    void givenExistingPassportIdShouldReturnStudent() {
 
         Passport passport = em.find(Passport.class, 40001L);
         logger.info("Passport -> {}", passport);
         logger.info("Student -> {}", passport.getStudent());
+    }
+
+    @Test
+    @Transactional
+    void retrieveStudentAndCourse() {
+        Student student = em.find(Student.class, 20002L);
+
+        logger.info("Student: {}", student);
+        logger.info("Student Courses: {}", student.getCourses());
     }
 }
