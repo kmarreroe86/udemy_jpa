@@ -77,4 +77,14 @@ public class Course {
     public void removeStudent(Student student) {
         students.remove(student);
     }
+
+    @Override
+    public String toString() {
+        return "Course{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", createdDate=" + createdDate +
+                ", lastUpdatedTime=" + lastUpdatedTime +
+                '}';
+    }
 }
