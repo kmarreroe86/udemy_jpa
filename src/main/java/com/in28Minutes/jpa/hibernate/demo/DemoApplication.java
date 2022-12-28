@@ -32,7 +32,9 @@ public class DemoApplication implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-/*  Testing relationships
+
+        /**** Testing relationships ****/
+    /*
       logger.info("Course by id -> {}", courseRepository.findById(10001L));
 
         courseRepository.playWithEntityManager();
@@ -61,10 +63,10 @@ public class DemoApplication implements CommandLineRunner {
 */
 
 
-        /* Testing inheritance */
+        /**** Testing inheritance ****/
         // Jack FullTimeEmployee salary - 10000$
         // Jill PartTimeEmployee - 50$ per hour
-        employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
+       /* employeeRepository.insert(new PartTimeEmployee("Jill", new BigDecimal("50")));
         employeeRepository.insert(new FullTimeEmployee("Jack", new BigDecimal("10000")));
 
 //        logger.info("All Employees -> {}", employeeRepository.findAll());
@@ -73,6 +75,10 @@ public class DemoApplication implements CommandLineRunner {
 
         logger.info("Part Time Employees -> {}",
                 employeeRepository.retrieveAllPartTimeEmployees());
+        */
+
+        /**** ****/
+
 
     }
 }
