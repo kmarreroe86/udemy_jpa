@@ -7,14 +7,14 @@ import java.math.BigDecimal;
 
 @Entity
 @Data
-public class PartialEmployee extends Employee {
+public class PartTimeEmployee extends Employee {
 
     private BigDecimal hourlyWage;
 
-    public PartialEmployee(String name, BigDecimal hourlyWage) {
+    public PartTimeEmployee(String name, BigDecimal hourlyWage) {
         super(name);
         this.hourlyWage = hourlyWage;
     }
 
-    protected PartialEmployee() {  }
+    protected PartTimeEmployee() {  }
 }
