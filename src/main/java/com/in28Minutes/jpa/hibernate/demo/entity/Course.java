@@ -1,5 +1,6 @@
 package com.in28Minutes.jpa.hibernate.demo.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
@@ -55,6 +56,7 @@ public class Course {
     @ManyToMany(mappedBy = "courses")
     @Setter(AccessLevel.NONE)
     @Getter
+    @JsonIgnore
     private Set<Student> students = new HashSet<>();
 
     public Course(String name) {

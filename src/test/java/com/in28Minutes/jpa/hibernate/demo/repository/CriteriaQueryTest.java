@@ -29,7 +29,7 @@ public class CriteriaQueryTest {
         CriteriaBuilder cb = em.getCriteriaBuilder();
         CriteriaQuery<Course> cq = cb.createQuery(Course.class);
 
-        // 2. Define roots for tables which are involved in the query
+        // 2. Define roots for tables which are involved in the query (from part)
         Root<Course> courseRoot = cq.from(Course.class);
 
         // 3. Define Predicates etc using Criteria Builder

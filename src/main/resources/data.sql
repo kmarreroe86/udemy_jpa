@@ -6,6 +6,14 @@ insert into course(id, name, created_date, last_updated_time)
 values(10003,'Spring Boot in 100 Steps', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 insert into course(id, name, created_date, last_updated_time)
 values(10004,'Scala in 100 Steps', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+insert into course(id, name, created_date, last_updated_time)
+values(10005,'Dummy2', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+insert into course(id, name, created_date, last_updated_time)
+values(10006,'Dummy3', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+insert into course(id, name, created_date, last_updated_time)
+values(10007,'Dummy4', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+insert into course(id, name, created_date, last_updated_time)
+values(10008,'Dummy5', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
 
 insert into passport(id,number)
 values(40001,'E123456');
