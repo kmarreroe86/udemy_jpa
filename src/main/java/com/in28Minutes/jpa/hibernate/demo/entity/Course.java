@@ -20,7 +20,8 @@ import java.util.Set;
 @NamedQueries(
         value = {
                 @NamedQuery(name = "query_get_all", query = "Select c from Course c"),
-                @NamedQuery(name = "query_get_100_Step_courses", query = "Select c from Course c where name like '%100 Steps'")
+                @NamedQuery(name = "query_get_100_Step_courses", query = "Select c from Course c where name like '%100 Steps'"),
+                @NamedQuery(name = "query_get_all_courses_join_fetch", query = "Select  c  From Course c JOIN FETCH c.students s")
         }
 )
 @Cacheable  // Course details will be cached in 2nd level cache for further requests
