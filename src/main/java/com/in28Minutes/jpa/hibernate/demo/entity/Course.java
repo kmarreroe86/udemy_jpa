@@ -19,6 +19,7 @@ import java.util.Set;
                 @NamedQuery(name = "query_get_100_Step_courses", query = "Select c from Course c where name like '%100 Steps'")
         }
 )
+@Cacheable  // Course details will be cached in 2nd level cache for further requests
 public class Course {
 
     @Id

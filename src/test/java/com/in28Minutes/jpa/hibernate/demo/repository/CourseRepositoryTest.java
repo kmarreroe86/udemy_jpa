@@ -36,6 +36,21 @@ class CourseRepositoryTest {
     }
 
     @Test
+    @Transactional  // Retrieving same info inside the same transaction is returned from the first level cache
+    void givenAnExistingIdShouldReturnACourse_FirstLevelCache() {
+        Long knownId = 10001L;
+
+        var course = courseRepository.findById(knownId);
+        logger.info("First Course retrieved: {}", course);
+
+        var course2 = courseRepository.findById(knownId);
+        logger.info("Second Course retrieved: {}", course2);
+
+        assertEquals(course.getName(), "JPA in 50 Steps");
+        assertEquals(course2.getName(), "JPA in 50 Steps");
+    }
+
+    @Test
     @DirtiesContext
     void givenAnExistingIdShouldDeleteACourse() {
         Long knownId = 10002L;
