@@ -20,6 +20,10 @@ public class Student {
     @Column(nullable = false)
     private String name;
 
+    @Setter
+    @Getter
+    // Creates each field in Address class as columns in student table
+    private Address address;
 
 
     /** In one-to-one relations are fetched eagerly by default, set Lazy to change it. */

@@ -12,6 +12,8 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
+import java.util.List;
 
 @SpringBootApplication
 public class DemoApplication implements CommandLineRunner {
@@ -34,19 +36,19 @@ public class DemoApplication implements CommandLineRunner {
     public void run(String... args) throws Exception {
 
         /**** Testing relationships ****/
-    /*
+
       logger.info("Course by id -> {}", courseRepository.findById(10001L));
 
         courseRepository.playWithEntityManager();
 
         studentRepository.saveStudentWithPassport();
 
-        Review review = new Review(4, "Another review for JPA in 50 Steps");
+        Review review = new Review(ReviewRatingEnum.FOUR, "Another review for JPA in 50 Steps");
         courseRepository.addReviewToCourse(10002L, review);
         List<Review> reviews = Arrays.asList(
-                new Review(5, "Test review 5 rate"),
-                new Review(4, "Test review 4 rate"),
-                new Review(3, "Test review 3 rate")
+                new Review(ReviewRatingEnum.FIVE, "Test review 5 rate"),
+                new Review(ReviewRatingEnum.FOUR, "Test review 4 rate"),
+                new Review(ReviewRatingEnum.THREE, "Test review 3 rate")
         );
         courseRepository.addReviewsToCourse(10002L, reviews);
 
@@ -60,7 +62,7 @@ public class DemoApplication implements CommandLineRunner {
 
 
         courseRepository.addStudentToCourse(10004L, 20001L);
-*/
+
 
 
         /**** Testing inheritance ****/

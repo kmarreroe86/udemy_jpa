@@ -3,7 +3,11 @@ package com.in28Minutes.jpa.hibernate.demo.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.SQLDelete;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.annotations.Where;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -20,7 +24,11 @@ import java.util.Set;
         }
 )
 @Cacheable  // Course details will be cached in 2nd level cache for further requests
+@SQLDelete(sql = "update course set is_deleted=true where id =?")   // for soft deletion
+@Where(clause = "is_deleted = false")   // select taking into account soft deletion column is_deleted (apply this for querying course, doesn't work with native queries)
 public class Course {
+
+    private static Logger LOGGER = LoggerFactory.getLogger(Course.class);
 
     @Id
     @GeneratedValue
@@ -33,6 +41,8 @@ public class Course {
     @Setter
     private String name;
 
+    private boolean isDeleted;
+
     @CreationTimestamp
     @Getter
     @Setter
@@ -42,7 +52,6 @@ public class Course {
     @Getter
     @Setter
     private LocalDateTime lastUpdatedTime;
-
 
 
     /** One-To-Many side fetch strategy by default is lazy */
@@ -79,6 +88,12 @@ public class Course {
 
     public void removeStudent(Student student) {
         students.remove(student);
+    }
+
+    @PreRemove  // Update the entity in the context, so hibernate can know the entity has been updated
+    public void preRemoved() {
+        LOGGER.info("Setting is_deleted to true");
+        this.isDeleted = true;
     }
 
     @Override

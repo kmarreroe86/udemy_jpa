@@ -22,21 +22,21 @@ class NativeQueriesTest {
 
     @Test
     void shouldReturnListOfCourses() {
-        Query query = em.createNativeQuery("Select * from Course", Course.class);
+        Query query = em.createNativeQuery("Select * from Course where is_deleted = 0", Course.class);
         List resultList = query.getResultList();
         logger.info("Select c from course -> {}", resultList);
     }
 
     @Test
     void shouldReturnListOfCoursesParameter() {
-        Query query = em.createNativeQuery("Select * from Course where id = ?", Course.class);
+        Query query = em.createNativeQuery("Select * from Course where id = ? and is_deleted = false", Course.class);
         query.setParameter(1, 10001);
         List resultList = query.getResultList();
         logger.info("Select c from course -> {}", resultList);
     }
 
     void shouldReturnListOfCoursesNameParameter() {
-        Query query = em.createNativeQuery("Select * from Course where id = ?", Course.class);
+        Query query = em.createNativeQuery("Select * from Course where id = ? and is_deleted = false", Course.class);
         query.setParameter("id", 10001);
         List resultList = query.getResultList();
         logger.info("Select c from course -> {}", resultList);

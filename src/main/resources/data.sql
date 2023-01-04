@@ -1,19 +1,19 @@
-insert into course(id, name, created_date, last_updated_time)
-values(10001,'JPA in 50 Steps', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
-insert into course(id, name, created_date, last_updated_time)
-values(10002,'Spring in 50 Steps', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
-insert into course(id, name, created_date, last_updated_time)
-values(10003,'Spring Boot in 100 Steps', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
-insert into course(id, name, created_date, last_updated_time)
-values(10004,'Scala in 100 Steps', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
-insert into course(id, name, created_date, last_updated_time)
-values(10005,'Dummy2', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
-insert into course(id, name, created_date, last_updated_time)
-values(10006,'Dummy3', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
-insert into course(id, name, created_date, last_updated_time)
-values(10007,'Dummy4', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
-insert into course(id, name, created_date, last_updated_time)
-values(10008,'Dummy5', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP());
+insert into course(id, name, created_date, last_updated_time, is_deleted)
+values(10001,'JPA in 50 Steps', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), false);
+insert into course(id, name, created_date, last_updated_time, is_deleted)
+values(10002,'Spring in 50 Steps', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), false);
+insert into course(id, name, created_date, last_updated_time, is_deleted)
+values(10003,'Spring Boot in 100 Steps', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), false);
+insert into course(id, name, created_date, last_updated_time, is_deleted)
+values(10004,'Scala in 100 Steps', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), false);
+insert into course(id, name, created_date, last_updated_time, is_deleted)
+values(10005,'Dummy2', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), false);
+insert into course(id, name, created_date, last_updated_time, is_deleted)
+values(10006,'Dummy3', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), false);
+insert into course(id, name, created_date, last_updated_time, is_deleted)
+values(10007,'Dummy4', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), false);
+insert into course(id, name, created_date, last_updated_time, is_deleted)
+values(10008,'Dummy5', CURRENT_TIMESTAMP(), CURRENT_TIMESTAMP(), false);
 
 insert into passport(id,number)
 values(40001,'E123456');
@@ -34,11 +34,11 @@ insert into student(id,name,passport_id)
 values(20004,'John',40004);
 
 insert into review(id,rating,description, course_id)
-values(50001, 5, 'Great Course', 10001);
+values(50001, 'FIVE', 'Great Course', 10001);
 insert into review(id,rating,description, course_id)
-values(50002, 4, 'Wonderful Course', 10001);
+values(50002, 'FOUR', 'Wonderful Course', 10001);
 insert into review(id,rating,description, course_id)
-values(50003, 5, 'Awesome Course', 10003);
+values(50003, 'FIVE', 'Awesome Course', 10003);
 
 insert into student_course(student_id,course_id)
 values(20001,10001);

@@ -22,11 +22,13 @@ public class Review {
     private Long id;
 
     @Column(nullable = false)
-    @Min(1)
-    @Max(5)
+//    @Min(1)
+//    @Max(5)
     @Getter
     @Setter
-    private Integer rating;
+//    private Integer rating;
+    @Enumerated(EnumType.STRING)
+    private ReviewRatingEnum rating;
 
     private String description;
 
@@ -37,7 +39,7 @@ public class Review {
     @Setter
     private Course course;
 
-    public Review(Integer rating, String description) {
+    public Review(ReviewRatingEnum rating, String description) {
         this.rating = rating;
         this.description = description;
     }
