@@ -48,3 +48,6 @@ insert into student_course(student_id,course_id)
 values(20003,10001);
 insert into student_course(student_id,course_id)
 values(20001,10003);
+
+insert into product values(1, 'beer');
+insert into product values(2, 'chocolate');

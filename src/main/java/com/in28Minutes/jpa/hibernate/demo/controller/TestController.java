@@ -1,6 +1,5 @@
 package com.in28Minutes.jpa.hibernate.demo.controller;
 
-import com.in28Minutes.jpa.hibernate.demo.repository.CourseRepository;
 import com.in28Minutes.jpa.hibernate.demo.repository.CourseSpringDataRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
