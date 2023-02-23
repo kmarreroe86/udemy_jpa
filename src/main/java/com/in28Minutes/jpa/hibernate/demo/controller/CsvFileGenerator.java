@@ -19,6 +19,7 @@ public class CsvFileGenerator {
             for (Course course : students) {
                 printer.printRecord(course.getId(), course.getName(), course.getReviews(), course.getCreatedDate());
             }
+            printer.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
